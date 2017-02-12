@@ -1,0 +1,80 @@
+server:
+  port: 8765
+
+ribbon: 
+  ConnectTimeout: 30000
+  ReadTimeout: 990000
+  maxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true
+
+# Feign request Interceptor does not work with BRIXTON.SR$
+# https://github.com/spring-cloud/spring-cloud-netflix/issues/1191    
+feign:
+  hystrix:
+    enabled: false
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+  execution:
+    isolation:
+      thread:
+        timeoutInMilliseconds: 30000 
+          
+  
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
+
+# zuul:  
+#   routes:    
+#     ui-service:
+#       path: /product/**
+#       serviceId: ui-service
+#     sample-facade-service:      
+#       path: /dummy/**
+#       serviceId: sample-facade-service
+#     user-management-service:
+#       path: /user/**, /client/**
+#       serviceId: user-management-service
+#     notification-service:
+#       path: /notify/**,
+#       serviceId: notification-service
+#     db-service:
+#       path: /db/*
+#       serviceId: db-service
+#     config-service:
+#       path: /config/*
+#       serviceId: config-service
+
+zuul:
+  routes:
+    sample-facade-service: /dummy/**
+    security-service:
+      sensitiveHeaders:
+      path: /uaa/**
+      stripPrefix: false
+  add-proxy-headers: true
+
+security:
+  # Disable Spring Boot basic authentication
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:8063/uaa/oauth/token
+      userAuthorizationUri: http://localhost:8063/uaa/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8063/uaa/user
+      preferTokenInfo: false
+
+logging:
+  level.org.springframework.security: DEBUG

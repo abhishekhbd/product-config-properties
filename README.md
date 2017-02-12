@@ -1,1 +1,2 @@
-# product-config-properties
+# sample-config
+Spring Cloud External Configuration Repository
