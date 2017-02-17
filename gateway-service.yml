@@ -64,6 +64,9 @@ zuul:
       sensitiveHeaders:
       path: /uaa/**
       stripPrefix: false
+    user-management-service:
+      path: /user/**, /client/**
+      serviceId: user-management-service
   add-proxy-headers: true
 
 security:
