@@ -65,7 +65,7 @@ zuul:
       path: /uaa/**
       stripPrefix: false
     user-management-service:
-      path: /user/**, /client/**
+      path: /user-management/**
       serviceId: user-management-service
   add-proxy-headers: true
 
