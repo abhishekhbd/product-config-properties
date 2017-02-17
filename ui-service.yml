@@ -7,3 +7,6 @@ logging:
 
 server:
   port: 8081
+  
+authorisation:
+  Basic Y2xpZW50SWQ6c2VjcmV0
