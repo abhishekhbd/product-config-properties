@@ -67,6 +67,7 @@ zuul:
     user-management-service:
       path: /user-management/**
       serviceId: user-management-service
+    ui-service: /**
   add-proxy-headers: true
 
 security:
