@@ -4,8 +4,9 @@ server:
 ribbon: 
   ConnectTimeout: 30000
   ReadTimeout: 990000
-  maxAutoRetries: 1
-  MaxAutoRetriesNextServer: 2
+  maxAutoRetries: 3
+  MaxAutoRetriesNextServer: 3
+  OkToRetryOnAllOperations: true
   eureka:
     enabled: true
 
@@ -58,6 +59,7 @@ eureka:
 #       serviceId: config-service
 
 zuul:
+  retryable: true
   routes:
     sample-facade-service: /dummy/**
     security-service:
