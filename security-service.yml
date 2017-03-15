@@ -27,6 +27,6 @@ security:
   sessions: if-required
   basic:
     enabled: false
-  ignored: /css/**,/js/**,/favicon.ico,/webjars/**,/javascript/**,/javascript,/angular,/angular/**
+  ignored: /css/**,/js/**,/favicon.ico,/webjars/**,/javascript/**,/angular/**
 logging:
   level.org.springframework.security: DEBUG
