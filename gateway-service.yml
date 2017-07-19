@@ -76,10 +76,10 @@ security:
   # Disable Spring Boot basic authentication
   oauth2:
     client:
-      accessTokenUri: http://security-service/uaa/oauth/token
-      userAuthorizationUri: http://security-service/uaa/oauth/authorize
+      accessTokenUri: http://localhost:8063/uaa/oauth/token
+      userAuthorizationUri: http://localhost:8063/uaa/oauth/authorize
     resource:
-      userInfoUri: http://security-service/uaa/user
+      userInfoUri: http://localhost:8063/uaa/user
       preferTokenInfo: false
 
 logging:
